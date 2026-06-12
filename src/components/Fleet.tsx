@@ -6,12 +6,20 @@ import Expandable from './Expandable'
 
 const fleet = fleetJson as unknown as FleetData
 
+const ANCHOR_TOOLS = new Set(['GitLaw', 'SafeVoice'])
+const DEMOTED_TOOLS = new Set(['movie-mcp'])
+
 function ToolCard({ tool, primary }: { tool: FleetTool; primary: boolean }) {
   const { t } = useLang()
+  const anchor = ANCHOR_TOOLS.has(tool.name)
   return (
     <div
       className={`lift rounded-xl border p-5 ${
-        primary ? 'border-core/40 bg-white/60' : 'border-hairline bg-white/30'
+        anchor
+          ? 'border-core/50 bg-softwhite'
+          : primary
+            ? 'border-hairline border-dashed bg-white/40'
+            : 'border-hairline bg-white/30'
       }`}
     >
       <div className="flex items-center justify-between">
@@ -63,7 +71,19 @@ function Group({ group, primary }: { group: FleetData['groups'][number]; primary
 export default function Fleet() {
   const { lang, t } = useLang()
   const ref = useReveal<HTMLElement>(lang)
-  const [head, ...tail] = fleet.groups
+  const [rawHead, ...tail] = fleet.groups
+  // Anker zuerst, movie-mcp gehört thematisch nicht neben BaFin-Claims — wandert in den Klappbereich
+  const head = {
+    ...rawHead,
+    tools: [
+      ...rawHead.tools.filter((x) => ANCHOR_TOOLS.has(x.name)),
+      ...rawHead.tools.filter((x) => !ANCHOR_TOOLS.has(x.name) && !DEMOTED_TOOLS.has(x.name)),
+    ],
+  }
+  const demoted = rawHead.tools.filter((x) => DEMOTED_TOOLS.has(x.name))
+  const expandGroups = demoted.length
+    ? [{ ...tail[0], tools: [...demoted, ...(tail[0]?.tools ?? [])] }, ...tail.slice(1)]
+    : tail
   return (
     <section id="flotte" ref={ref} className="mx-auto max-w-[1320px] px-6 py-24 lg:px-8">
       <p className="eyebrow reveal">{t.fleet.eyebrow}</p>
@@ -78,9 +98,9 @@ export default function Fleet() {
       <div className="reveal">
         <Group group={head} primary />
       </div>
-      {tail.length > 0 && (
+      {expandGroups.length > 0 && (
         <Expandable more={t.fleet.moreGroups} less={t.fleet.lessGroups} className="mt-8">
-          {tail.map((g) => (
+          {expandGroups.map((g) => (
             <Group key={g.title} group={g} primary={false} />
           ))}
         </Expandable>

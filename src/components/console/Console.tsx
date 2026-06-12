@@ -38,7 +38,7 @@ export default function Console() {
                 key={k}
                 onClick={() => setTab(k)}
                 data-testid={`tab-${k}`}
-                className={`rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.1em] transition ${
+                className={`rounded-full px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.1em] transition sm:px-4 sm:text-[11px] ${
                   tab === k
                     ? 'bg-core text-darkgreen'
                     : 'border border-mist/30 text-mist hover:border-mist/60'

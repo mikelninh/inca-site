@@ -15,28 +15,28 @@ export default function Grounding() {
   const c = tl.cases[idx]
   const verified = Boolean((c.result as { verified?: boolean }).verified)
   return (
-    <section id="grounding" ref={ref} className="bg-sage py-24 text-cream">
+    <section id="grounding" ref={ref} className="bg-softwhite py-24">
       <div className="mx-auto max-w-[1320px] px-6 lg:px-8">
-        <p className="eyebrow reveal !text-mist/70">{t.grounding.eyebrow}</p>
-        <h2 className="reveal mt-3 max-w-2xl text-4xl text-cream lg:text-5xl">
+        <p className="eyebrow reveal">{t.grounding.eyebrow}</p>
+        <h2 className="reveal mt-3 max-w-2xl text-4xl lg:text-5xl">
           {t.grounding.titlePre}
-          <em className="text-mist">{t.grounding.titleEm}</em>
+          <em>{t.grounding.titleEm}</em>
         </h2>
-        <p className="reveal mt-5 max-w-2xl text-mist/80">{t.grounding.intro}</p>
+        <p className="reveal mt-5 max-w-prose text-muted">{t.grounding.intro}</p>
         <div className="reveal mt-10 grid gap-6 lg:grid-cols-[260px_1fr]">
           <div className="space-y-2">
-            <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-mist/70">
+            <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-faint">
               {t.grounding.toolTitle}
             </p>
             {tl.cases.map((tc, i) => (
               <button
                 key={tc.label}
                 onClick={() => setIdx(i)}
-                className={`block w-full rounded-lg border p-3 text-left text-sm ${
-                  i === idx ? 'border-core bg-core/15' : 'border-mist/25 hover:border-mist/50'
+                className={`lift block w-full rounded-lg border bg-white/60 p-3 text-left text-sm ${
+                  i === idx ? 'border-core bg-core/10' : 'border-hairline hover:border-faint'
                 }`}
               >
-                <span className="font-mono text-[10px] text-mist/60">{tc.tool}</span>
+                <span className="font-mono text-[10px] text-faint">{tc.tool}</span>
                 <p className="font-serif">{tc.label}</p>
               </button>
             ))}

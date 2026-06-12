@@ -9,11 +9,11 @@ function VersionCard({ v, prompt }: { v: BenchmarkVersion; prompt: string }) {
     <div className="flex-1 rounded-xl bg-cream p-4">
       <p className="font-serif text-lg">{v.label}</p>
       <p className="text-xs text-muted">{v.note}</p>
-      <dl className="mt-3 space-y-1 font-mono text-xs">
+      <dl className="mt-3 space-y-1 text-xs">
         {Object.entries(v.metrics).map(([k, val]) => (
           <div key={k} className="flex justify-between">
-            <dt className="text-muted">{k}</dt>
-            <dd className="tabular-nums">{(val * 100).toFixed(1)}%</dd>
+            <dt className="text-muted">{k.replace(/_/g, ' ')}</dt>
+            <dd className="font-mono tabular-nums">{(val * 100).toFixed(1)}%</dd>
           </div>
         ))}
       </dl>
@@ -33,6 +33,7 @@ function VersionCard({ v, prompt }: { v: BenchmarkVersion; prompt: string }) {
 }
 
 export default function BenchmarkTab({ data }: { data: LoopData }) {
+  const { t } = useLang()
   const b = data.benchmark
   return (
     <div>
@@ -40,9 +41,7 @@ export default function BenchmarkTab({ data }: { data: LoopData }) {
         <VersionCard v={b.versions.v1} prompt={b.prompts.v1} />
         <VersionCard v={b.versions.v2} prompt={b.prompts.v2} />
       </div>
-      <p className="mt-4 rounded-lg bg-cream/10 p-3 font-mono text-[11px] text-mist/80">
-        ⚠ {b.disclaimer}
-      </p>
+      <p className="mt-4 px-1 text-sm text-mist">△ {t.console.benchmark.disclaimer}</p>
     </div>
   )
 }

@@ -17,7 +17,7 @@ test('voller Durchklick DE', async ({ page }) => {
 
   // Tabs
   await page.getByTestId('tab-auswertung').click()
-  await expect(page.getByText('handgeschriebenen Fixtures')).toBeVisible()
+  await expect(page.getByText('Handgeschriebene Fixtures')).toBeVisible()
   await page.getByTestId('tab-benchmark').click()
   await expect(page.getByText('Prompt lesen').first()).toBeVisible()
 

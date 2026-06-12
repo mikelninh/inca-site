@@ -24,7 +24,8 @@ export default function Hero() {
       className="mx-auto grid max-w-[1320px] gap-12 px-6 py-20 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-28"
     >
       <div>
-        <p className="eyebrow reveal">{t.hero.eyebrow}</p>
+        <p className="eyebrow reveal hidden sm:block">{t.hero.eyebrow}</p>
+        <p className="eyebrow reveal sm:hidden">{t.hero.eyebrowShort}</p>
         <h1 className="reveal mt-4 text-5xl leading-[0.98] lg:text-7xl">
           {t.hero.titlePre}
           <em>{t.hero.titleEm}</em>
@@ -41,6 +42,14 @@ export default function Hero() {
             {t.hero.secondary}
           </a>
         </div>
+        <a
+          href="https://github.com/mikelninh/inca-site"
+          target="_blank"
+          rel="noreferrer"
+          className="reveal mt-5 inline-block font-mono text-xs text-faint underline-offset-4 hover:text-core-deep hover:underline"
+        >
+          {t.hero.repo}
+        </a>
       </div>
       <a
         href="#konsole"

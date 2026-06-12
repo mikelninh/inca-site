@@ -20,7 +20,7 @@ export default function Fit() {
         ))}
       </div>
       <div
-        className="reveal mx-auto mt-12 max-w-lg rounded-xl bg-mist p-4 font-mono text-xs leading-relaxed text-darkgreen"
+        className="reveal mx-auto mt-12 max-w-md rounded-lg border border-mist bg-cream p-4 font-mono text-xs leading-relaxed text-darkgreen"
         data-testid="easter-egg"
       >
         <div>

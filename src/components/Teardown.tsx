@@ -13,20 +13,7 @@ export default function Teardown() {
         {t.teardown.titlePre}
         <em>{t.teardown.titleEm}</em>
       </h2>
-      <p className="reveal mt-5 max-w-2xl text-muted">{t.teardown.intro}</p>
-      <div className="reveal mt-12 overflow-x-auto">
-        <div className="flex min-w-[720px] items-end border-b border-hairline pb-4">
-          {t.teardown.pipeline.map((p, i) => (
-            <div key={p.step} className={`flex-1 px-2 ${i % 2 ? 'pt-8' : ''}`}>
-              <p className="font-mono text-2xl text-core-deep tabular-nums">{p.agents}</p>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.1em] text-muted">
-                {p.step}
-              </p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-2 font-mono text-[11px] text-faint">{t.teardown.pipelineNote}</p>
-      </div>
+      <p className="reveal mt-5 max-w-prose text-muted">{t.teardown.intro}</p>
       <h3 className="reveal mt-14 text-2xl">{t.teardown.breaksTitle}</h3>
       <div className="mt-5 grid gap-6 md:grid-cols-2">
         {[first, second].map((b) => (

@@ -25,10 +25,9 @@ export default function EvalTab({ data }: { data: LoopData }) {
         <Stat label={t.console.eval.fraudPrecision} value={m.fraud_precision} />
         <Stat label={t.console.eval.autoShare} value={m.auto_resolved_share} />
       </div>
-      <p className="mt-4 rounded-lg bg-cream/10 p-3 font-mono text-[11px] text-mist/80">
-        ⚠ {t.console.evalDisclaimer}
+      <p className="mt-4 px-1 text-sm text-mist">
+        △ {t.console.evalDisclaimer} <span className="text-mist/70">{t.console.evalWink}</span>
       </p>
-      <p className="mt-2 px-3 font-mono text-[11px] text-mist/60">{t.console.evalWink}</p>
     </div>
   )
 }

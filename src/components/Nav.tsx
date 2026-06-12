@@ -1,6 +1,6 @@
 import { useLang } from '../i18n'
 
-const ANCHORS = ['konsole', 'teardown', 'werkstatt', 'grounding', 'flotte', 'fit', 'cta'] as const
+const ANCHORS = ['konsole', 'teardown', 'grounding', 'flotte', 'fit', 'cta'] as const
 
 export default function Nav() {
   const { lang, setLang, t } = useLang()

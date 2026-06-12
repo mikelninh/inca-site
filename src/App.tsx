@@ -3,10 +3,9 @@ import Fit from './components/Fit'
 import Fleet from './components/Fleet'
 import Grounding from './components/Grounding'
 import Hero from './components/Hero'
-import Loop from './components/Loop'
+import Interstitial from './components/Interstitial'
 import Nav from './components/Nav'
 import Teardown from './components/Teardown'
-import Werkstatt from './components/Werkstatt'
 import Console from './components/console/Console'
 import { LangProvider } from './i18n'
 
@@ -15,10 +14,9 @@ export default function App() {
     <LangProvider>
       <Nav />
       <Hero />
-      <Loop />
       <Console />
+      <Interstitial />
       <Teardown />
-      <Werkstatt />
       <Grounding />
       <Fleet />
       <Fit />

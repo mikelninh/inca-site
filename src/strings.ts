@@ -2,7 +2,6 @@ const de = {
   nav: {
     konsole: 'Konsole',
     teardown: 'Teardown',
-    werkstatt: 'Werkstatt',
     grounding: 'Grounding',
     flotte: 'Flotte',
     fit: 'Fit',
@@ -10,22 +9,15 @@ const de = {
   },
   hero: {
     eyebrow: 'BEWERBUNG · AI OPERATIONS · BERLIN',
+    eyebrowShort: 'AI OPERATIONS · BERLIN',
     titlePre: 'Eine Bewerbung, ',
     titleEm: 'die man anfassen kann.',
-    sub: 'Euren Schadenloop kenne ich nur von außen — Website, Stellenprofil, gesunder Respekt. Also habe ich nachgebaut, was ich sehen konnte: drei Agenten, ein Receipt pro Fall, ein Eval-Harness. Bestimmt habt ihr vieles besser gelöst. Genau darüber würde ich gern reden.',
+    sub: 'Ich kenne euren Schadenloop nur von außen. Also habe ich ihn nachgebaut: drei Agenten, ein Receipt pro Fall, ein Eval-Harness. Wo er bei euch in der Realität bricht — darüber will ich reden.',
     cta: 'Mit Mikel sprechen',
     secondary: 'Erst anfassen, dann urteilen ↓',
+    repo: 'Code: github.com/mikelninh/inca-site',
   },
-  loop: {
-    title: 'Hinter allem steckt dieselbe Schleife.',
-    steps: [
-      { t: 'Aufnehmen', d: 'Fall, Daten, Belege strukturiert erfassen.' },
-      { t: 'Prüfen', d: 'Deckung, Risiko, Plausibilität bewerten.' },
-      { t: 'Entscheiden', d: 'Code entscheidet, sperrt das Riskante.' },
-      { t: 'Belegen', d: 'Receipt: Quellen, Konfidenz, was geblockt wurde.' },
-    ],
-    motto: 'Nicht erzählt. Gebaut.',
-  },
+  interstitial: { pre: 'Nicht erzählt. ', em: 'Gebaut.' },
   console: {
     header: 'LOOP · OFFLINE-FIXTURES · DETERMINISTISCH',
     tabs: { faelle: 'Fälle', auswertung: 'Auswertung', benchmark: 'Benchmark' },
@@ -33,8 +25,7 @@ const de = {
     breakBadge: '⚠ bricht bewusst',
     receiptHint: 'Receipt — jede Entscheidung nachvollziehbar',
     traceToggle: 'Agent-Trace aufklappen',
-    evalDisclaimer:
-      'Zahlen aus handgeschriebenen Fixtures — sie zeigen, was der Harness misst, nicht Modellgüte.',
+    evalDisclaimer: 'Handgeschriebene Fixtures — gezeigt wird die Methode, nicht Modellgüte.',
     evalWink: 'Ihr habt 180.000+ Schäden bearbeitet. Ich habe acht. Dafür kenne ich jeden persönlich.',
     eval: {
       accuracy: 'Entscheidungs-Genauigkeit',
@@ -42,25 +33,18 @@ const de = {
       fraudPrecision: 'Fraud-Precision',
       autoShare: 'Dunkel-Quote',
     },
-    benchmark: { showPrompt: 'Prompt lesen' },
+    benchmark: {
+      showPrompt: 'Prompt lesen',
+      disclaimer:
+        'Selbsttest auf synthetischen Fixtures — die Differenz v1→v2 ist projiziert, nicht gemessen. Echte Zahlen: --live mit Key.',
+    },
   },
   teardown: {
     eyebrow: 'TEARDOWN',
     titlePre: 'Wie ich ',
     titleEm: 'euren Loop lese.',
     intro:
-      'Quellenlage, ehrlich: eure Website, das Stellenprofil, öffentliche Interviews — mehr habe ich nicht, der Rest ist Hypothese. Und Hypothesen schreibt man auf, damit man sie korrigieren kann. So lese ich es: zwei Produkte auf einer Plattform, beide dieselbe Schleife. Der Punkt, den ihr selbst benennt — Dunkelverarbeitungsquote ist nicht die wichtigste Kennzahl, Regulierungsqualität ist es — ist genau der, auf den ich das Demo gebaut habe.',
-    pipeline: [
-      { step: 'FNOL & Reserve', agents: 18 },
-      { step: 'Deckung & Haftung', agents: 12 },
-      { step: 'Kommunikation', agents: 24 },
-      { step: 'Regress', agents: 29 },
-      { step: 'Rechnung & Gutachten', agents: 63 },
-      { step: 'Betrugsprüfung', agents: 42 },
-      { step: 'Finale Prüfung', agents: 8 },
-    ],
-    pipelineNote:
-      'MARS routet jeden Fall durch 250+ KI-Agenten — die 140+ der Schadenquotenoptimierung sind die Prüfdisziplinen daraus.',
+      'Quellenlage, ehrlich: eure Website, das Stellenprofil, öffentliche Interviews — der Rest ist Hypothese. So lese ich es: zwei Produkte auf einer Plattform, beide dieselbe Schleife. Der Punkt, den ihr selbst benennt — Regulierungsqualität schlägt Dunkelquote — ist genau der, auf den ich das Demo gebaut habe.',
     breaksTitle: 'Wo es in der Realität bricht',
     breaksMore: 'Alle 5 Bruchstellen zeigen',
     breaksLess: 'Einklappen',
@@ -108,47 +92,10 @@ const de = {
       ],
     },
   },
-  werkstatt: {
-    eyebrow: 'WERKSTATT',
-    titlePre: 'Wie bei mir ein ',
-    titleEm: 'neuer Agent entsteht.',
-    intro:
-      'Kein Geheimnis, eher ein Handwerk — und oben in der Konsole könnt ihr jeden Schritt anfassen.',
-    steps: [
-      {
-        title: '1 · Erst die Fälle, dann der Agent',
-        body: 'Bevor es einen Prompt gibt, gibt es ein handgeschriebenes Ground-Truth-Set — inklusive der Fälle, an denen es brechen soll. Die acht Fälle oben sind genau so entstanden.',
-      },
-      {
-        title: '2 · Schema vor Prosa',
-        body: 'Structured Output definiert, was der Agent überhaupt sagen darf. Der Code entscheidet, das Modell liefert Einschätzungen — nie umgekehrt.',
-      },
-      {
-        title: '3 · Eval ab Tag eins',
-        body: 'Jede Prompt-Änderung läuft gegen denselben Bestand. Der Benchmark-Tab oben ist kein Feature, sondern mein normaler Arbeitsschritt.',
-      },
-      {
-        title: '4 · Receipt, oder es ist nicht passiert',
-        body: 'Quellen, Konfidenz, geblockte Aktionen, offene Fragen — pro Fall. Was sich nicht belegen lässt, wird nicht behauptet.',
-      },
-      {
-        title: '5 · Autonomie zuletzt',
-        body: 'Erst wenn der Recall auf dem teuersten Fehler stimmt, fällt eine menschliche Schranke. Nicht vorher, egal wie gut die Demo aussieht.',
-      },
-    ],
-    learnTitle: 'Was ich von euch lernen will',
-    learnIntro:
-      'Ehrlich: Die Methode steht, die Skalierungs-Narben fehlen noch. Die holt man sich nur im Maschinenraum. Meine drei ersten Fragen an euch:',
-    learn: [
-      'Wie triagiert ihr Edge-Cases bei echtem Volumen — wer entscheidet, welcher von 250+ Agenten ein Update bekommt?',
-      'Wie haltet ihr so viele Prompts im Team konsistent — Ownership, Review, Regressionsschutz?',
-      'Was hat euch der Weg von der Demo zu 180.000 Schäden über Evals gelehrt, das in keinem Paper steht?',
-    ],
-  },
   grounding: {
     eyebrow: 'POLICY GROUNDING',
-    titlePre: 'GitLaw für ',
-    titleEm: 'Versicherungsverträge.',
+    titlePre: 'Keine Klausel ',
+    titleEm: 'aus dem Modellgedächtnis.',
     intro:
       'Nicht „was denkt das Modell?", sondern „welche Klausel trägt die Entscheidung?". Mein GitLaw-MCP verifiziert Rechtszitate gegen 5.942 echte Gesetze — dieselbe Mechanik, die eure Deckungsprüfung zitierfest machen würde.',
     toolTitle: 'Die Tool-Schicht — echte Aufrufe, key-frei reproduzierbar',
@@ -162,12 +109,11 @@ const de = {
     eyebrow: 'FLOTTE',
     titlePre: 'Was sonst noch ',
     titleEm: 'fährt.',
-    intro:
-      'Ehrlich gerankt: echte Tests, echte Beispiel-Outputs, kein Vaporware-Grid. Status und Zahlen stammen aus echter Code-Sichtung.',
+    intro: 'Echte Tests, echte Beispiel-Outputs — Status und Zahlen aus Code-Sichtung.',
     deNote: '',
     tests: 'Tests',
     tools: 'Tools',
-    moreGroups: 'Auch das Ehrliche zeigen: teilweise fahrbar & Fundament',
+    moreGroups: 'Mehr zeigen: teilweise fahrbar & Fundament',
     lessGroups: 'Einklappen',
   },
   fit: {
@@ -199,6 +145,14 @@ const de = {
     title: 'Mit Mikel ',
     titleEm: 'sprechen.',
     sub: 'Mir ist weniger wichtig, ob das beeindruckt, als ob es auf eurem Operator-Niveau standhält. Wo bricht so etwas bei euch in der Realität?',
+    learnTitle: 'Was ich von euch lernen will',
+    learnIntro:
+      'Die Methode steht. Die Skalierungs-Narben holt man sich nur im Maschinenraum. Drei erste Fragen:',
+    learn: [
+      'Wie triagiert ihr Edge-Cases bei echtem Volumen — wer entscheidet, welcher von 250+ Agenten ein Update bekommt?',
+      'Wie haltet ihr so viele Prompts im Team konsistent — Ownership, Review, Regressionsschutz?',
+      'Was hat euch der Weg von der Demo zu 180.000 Schäden über Evals gelehrt, das in keinem Paper steht?',
+    ],
     mail: 'Mail an Mikel',
     linkedin: 'LinkedIn',
     homage: 'Inoffizielle Bewerbungsseite — Design als Hommage an inca / ochi.design.',
@@ -209,7 +163,6 @@ const en: typeof de = {
   nav: {
     konsole: 'Console',
     teardown: 'Teardown',
-    werkstatt: 'Workshop',
     grounding: 'Grounding',
     flotte: 'Fleet',
     fit: 'Fit',
@@ -217,22 +170,15 @@ const en: typeof de = {
   },
   hero: {
     eyebrow: 'APPLICATION · AI OPERATIONS · BERLIN',
+    eyebrowShort: 'AI OPERATIONS · BERLIN',
     titlePre: 'A job application ',
     titleEm: 'you can poke at.',
-    sub: 'I only know your claims loop from the outside — website, job ad, healthy respect. So I rebuilt what I could see: three agents, a receipt per claim, an eval harness. You have surely solved much of it better. That is exactly what I would like to talk about.',
+    sub: 'I only know your claims loop from the outside. So I rebuilt it: three agents, a receipt per claim, an eval harness. Where it breaks in your reality — that is what I want to talk about.',
     cta: 'Talk to Mikel',
     secondary: 'play first, judge later ↓',
+    repo: 'Code: github.com/mikelninh/inca-site',
   },
-  loop: {
-    title: 'Behind everything sits the same loop.',
-    steps: [
-      { t: 'Intake', d: 'Capture the claim, data and evidence — structured.' },
-      { t: 'Assess', d: 'Coverage, risk, plausibility.' },
-      { t: 'Decide', d: 'Code decides, blocks the risky parts.' },
-      { t: 'Prove', d: 'Receipt: sources, confidence, what was blocked.' },
-    ],
-    motto: 'Not told. Built.',
-  },
+  interstitial: { pre: 'Not told. ', em: 'Built.' },
   console: {
     header: 'LOOP · OFFLINE FIXTURES · DETERMINISTIC',
     tabs: { faelle: 'Cases', auswertung: 'Evaluation', benchmark: 'Benchmark' },
@@ -240,8 +186,7 @@ const en: typeof de = {
     breakBadge: '⚠ breaks on purpose',
     receiptHint: 'Receipt — every decision traceable',
     traceToggle: 'expand agent trace',
-    evalDisclaimer:
-      'Numbers come from hand-written fixtures — they show what the harness measures, not model quality.',
+    evalDisclaimer: 'Hand-written fixtures — this shows the method, not model quality.',
     evalWink: "You have processed 180,000+ claims. I have eight. Then again, I know each of mine personally.",
     eval: {
       accuracy: 'decision accuracy',
@@ -249,25 +194,18 @@ const en: typeof de = {
       fraudPrecision: 'fraud precision',
       autoShare: 'auto-resolved share',
     },
-    benchmark: { showPrompt: 'read the prompt' },
+    benchmark: {
+      showPrompt: 'read the prompt',
+      disclaimer:
+        'Self-test on synthetic fixtures — the v1→v2 delta is projected, not measured. Real numbers: --live with a key.',
+    },
   },
   teardown: {
     eyebrow: 'TEARDOWN',
     titlePre: 'How I read ',
     titleEm: 'your loop.',
     intro:
-      'My sources, honestly: your website, the job ad, public interviews — that is all I have, the rest is hypothesis. And hypotheses are written down so they can be corrected. This is how I read it: two products on one platform, both the same loop. The point you name yourselves — the auto-resolution rate is not the metric that matters, settlement quality is — is exactly what I built the demo around.',
-    pipeline: [
-      { step: 'FNOL & reserve', agents: 18 },
-      { step: 'Coverage & liability', agents: 12 },
-      { step: 'Communication', agents: 24 },
-      { step: 'Recourse', agents: 29 },
-      { step: 'Invoice & appraisal', agents: 63 },
-      { step: 'Fraud check', agents: 42 },
-      { step: 'Final review', agents: 8 },
-    ],
-    pipelineNote:
-      'MARS routes every claim through 250+ AI agents — the 140+ of the loss-ratio product are its verification disciplines.',
+      'My sources, honestly: your website, the job ad, public interviews — the rest is hypothesis. This is how I read it: two products on one platform, both the same loop. The point you name yourselves — settlement quality beats auto-resolution rate — is exactly what I built the demo around.',
     breaksTitle: 'Where it breaks in reality',
     breaksMore: 'Show all 5 breaking points',
     breaksLess: 'Collapse',
@@ -315,46 +253,10 @@ const en: typeof de = {
       ],
     },
   },
-  werkstatt: {
-    eyebrow: 'WORKSHOP',
-    titlePre: 'How a ',
-    titleEm: 'new agent is born here.',
-    intro: 'No secret, more of a craft — and in the console above you can touch every step.',
-    steps: [
-      {
-        title: '1 · Cases first, agent second',
-        body: 'Before there is a prompt, there is a hand-written ground-truth set — including the cases it is supposed to break on. The eight cases above came to life exactly this way.',
-      },
-      {
-        title: '2 · Schema before prose',
-        body: 'Structured output defines what the agent is allowed to say at all. The code decides, the model contributes assessments — never the other way round.',
-      },
-      {
-        title: '3 · Evals from day one',
-        body: 'Every prompt change runs against the same corpus. The benchmark tab above is not a feature, it is my normal working step.',
-      },
-      {
-        title: '4 · Receipt, or it did not happen',
-        body: 'Sources, confidence, blocked actions, open questions — per claim. What cannot be proven is not claimed.',
-      },
-      {
-        title: '5 · Autonomy last',
-        body: 'Only when recall on the most expensive error holds does a human gate come down. Not earlier, however good the demo looks.',
-      },
-    ],
-    learnTitle: 'What I want to learn from you',
-    learnIntro:
-      'Honestly: the method is in place, the scaling scars are still missing. You only earn those in the engine room. My first three questions for you:',
-    learn: [
-      'How do you triage edge cases at real volume — who decides which of 250+ agents gets an update?',
-      'How do you keep that many prompts consistent across a team — ownership, review, regression protection?',
-      'What did the road from demo to 180,000 claims teach you about evals that is in no paper?',
-    ],
-  },
   grounding: {
     eyebrow: 'POLICY GROUNDING',
-    titlePre: 'GitLaw for ',
-    titleEm: 'insurance contracts.',
+    titlePre: 'No clause ',
+    titleEm: 'from model memory.',
     intro:
       'Not "what does the model think?" but "which clause supports the decision?". My GitLaw MCP verifies legal citations against 5,942 real statutes — the same mechanics that would make your coverage checks citation-proof.',
     toolTitle: 'The tool layer — real calls, reproducible without a key',
@@ -368,12 +270,11 @@ const en: typeof de = {
     eyebrow: 'FLEET',
     titlePre: 'What else is ',
     titleEm: 'running.',
-    intro:
-      'Honestly ranked: real tests, real sample outputs, no vaporware grid. Status and numbers come from actual code review.',
+    intro: 'Real tests, real sample outputs — status and numbers from actual code review.',
     deNote: 'Tool descriptions are in German — the sources are German-language projects.',
     tests: 'tests',
     tools: 'tools',
-    moreGroups: 'Show the honest part too: partly running & foundations',
+    moreGroups: 'Show more: partly running & foundations',
     lessGroups: 'Collapse',
   },
   fit: {
@@ -405,6 +306,14 @@ const en: typeof de = {
     title: 'Talk to ',
     titleEm: 'Mikel.',
     sub: 'I care less about whether this impresses you than whether it holds up at your operator level. Where does something like this break in your reality?',
+    learnTitle: 'What I want to learn from you',
+    learnIntro:
+      'The method is in place. Scaling scars you only earn in the engine room. Three first questions:',
+    learn: [
+      'How do you triage edge cases at real volume — who decides which of 250+ agents gets an update?',
+      'How do you keep that many prompts consistent across a team — ownership, review, regression protection?',
+      'What did the road from demo to 180,000 claims teach you about evals that is in no paper?',
+    ],
     mail: 'Email Mikel',
     linkedin: 'LinkedIn',
     homage: 'Unofficial application page — the design is an homage to inca / ochi.design.',
