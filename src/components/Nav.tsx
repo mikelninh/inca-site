@@ -1,15 +1,16 @@
-import { t } from '../strings'
+import { useLang } from '../i18n'
 
-const ANCHORS = ['konsole', 'teardown', 'grounding', 'flotte', 'fit', 'cta'] as const
+const ANCHORS = ['konsole', 'teardown', 'werkstatt', 'grounding', 'flotte', 'fit', 'cta'] as const
 
 export default function Nav() {
+  const { lang, setLang, t } = useLang()
   return (
     <nav className="sticky top-0 z-50 border-b border-hairline bg-cream/90 backdrop-blur">
       <div className="mx-auto flex max-w-[1320px] items-center justify-between px-6 py-3 lg:px-8">
         <a href="#top" className="font-mono text-sm tracking-[0.14em]">
           MIKEL <span className="text-core">×</span> INCA
         </a>
-        <div className="hidden gap-6 md:flex">
+        <div className="hidden gap-6 lg:flex">
           {ANCHORS.map((a) => (
             <a
               key={a}
@@ -20,6 +21,14 @@ export default function Nav() {
             </a>
           ))}
         </div>
+        <button
+          onClick={() => setLang(lang === 'de' ? 'en' : 'de')}
+          data-testid="lang-toggle"
+          className="rounded-full border border-hairline px-3 py-1 font-mono text-xs text-muted transition hover:border-faint hover:text-ink"
+          aria-label={lang === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'}
+        >
+          {lang === 'de' ? 'EN' : 'DE'}
+        </button>
       </div>
     </nav>
   )

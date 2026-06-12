@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import agentRun from '../data/agent_run.json'
 import toolLayer from '../data/tool_layer.json'
+import { useLang } from '../i18n'
 import { useReveal } from '../motion'
-import { t } from '../strings'
 import type { AgentRun, ToolLayerData } from '../types'
 
 const tl = toolLayer as unknown as ToolLayerData
 const run = agentRun as AgentRun
 
 export default function Grounding() {
-  const ref = useReveal<HTMLElement>()
+  const { lang, t } = useLang()
+  const ref = useReveal<HTMLElement>(lang)
   const [idx, setIdx] = useState(0)
   const c = tl.cases[idx]
   const verified = Boolean((c.result as { verified?: boolean }).verified)

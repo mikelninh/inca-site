@@ -1,8 +1,11 @@
+import { useLang } from '../i18n'
 import { useReveal } from '../motion'
-import { t } from '../strings'
+import Expandable from './Expandable'
 
 export default function Teardown() {
-  const ref = useReveal<HTMLElement>()
+  const { lang, t } = useLang()
+  const ref = useReveal<HTMLElement>(lang)
+  const [first, second, ...rest] = t.teardown.breaks
   return (
     <section id="teardown" ref={ref} className="mx-auto max-w-[1320px] px-6 py-24 lg:px-8">
       <p className="eyebrow reveal">{t.teardown.eyebrow}</p>
@@ -26,13 +29,23 @@ export default function Teardown() {
       </div>
       <h3 className="reveal mt-14 text-2xl">{t.teardown.breaksTitle}</h3>
       <div className="mt-5 grid gap-6 md:grid-cols-2">
-        {t.teardown.breaks.map((b) => (
+        {[first, second].map((b) => (
           <div key={b.title} className="reveal rounded-xl border border-hairline bg-white/50 p-6">
             <h3 className="text-xl">{b.title}</h3>
             <p className="mt-2 text-sm text-muted">{b.body}</p>
           </div>
         ))}
       </div>
+      <Expandable more={t.teardown.breaksMore} less={t.teardown.breaksLess}>
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          {rest.map((b) => (
+            <div key={b.title} className="rounded-xl border border-hairline bg-white/50 p-6">
+              <h3 className="text-xl">{b.title}</h3>
+              <p className="mt-2 text-sm text-muted">{b.body}</p>
+            </div>
+          ))}
+        </div>
+      </Expandable>
       <div className="reveal mt-10 rounded-xl border-l-4 border-core bg-mist/30 p-6">
         <h3 className="text-xl">{t.teardown.first.title}</h3>
         <div className="mt-4 grid gap-5 md:grid-cols-2">

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import loop from '../../data/loop.json'
+import { useLang } from '../../i18n'
 import { useClock, useReveal } from '../../motion'
-import { t } from '../../strings'
 import type { LoopData } from '../../types'
 import BenchmarkTab from './BenchmarkTab'
 import CaseList from './CaseList'
@@ -11,11 +11,13 @@ import ReceiptView from './ReceiptView'
 
 const data = loop as unknown as LoopData
 
-type Tab = keyof typeof t.console.tabs
+const TABS = ['faelle', 'auswertung', 'benchmark'] as const
+type Tab = (typeof TABS)[number]
 
 export default function Console() {
+  const { lang, t } = useLang()
   const clock = useClock()
-  const ref = useReveal<HTMLElement>()
+  const ref = useReveal<HTMLElement>(lang)
   const [activeId, setActiveId] = useState(data.cases[0].claim_id)
   const [tab, setTab] = useState<Tab>('faelle')
   const active = data.cases.find((c) => c.claim_id === activeId)!
@@ -31,7 +33,7 @@ export default function Console() {
             <span>{clock} BERLIN</span>
           </div>
           <div className="mt-5 flex gap-2">
-            {(Object.keys(t.console.tabs) as Tab[]).map((k) => (
+            {TABS.map((k) => (
               <button
                 key={k}
                 onClick={() => setTab(k)}

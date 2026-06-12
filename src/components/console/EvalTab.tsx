@@ -1,5 +1,5 @@
+import { useLang } from '../../i18n'
 import { useCountUp } from '../../motion'
-import { t } from '../../strings'
 import type { LoopData } from '../../types'
 
 function Stat({ label, value }: { label: string; value: number }) {
@@ -15,6 +15,7 @@ function Stat({ label, value }: { label: string; value: number }) {
 }
 
 export default function EvalTab({ data }: { data: LoopData }) {
+  const { t } = useLang()
   const m = data.metrics
   return (
     <div>
@@ -27,6 +28,7 @@ export default function EvalTab({ data }: { data: LoopData }) {
       <p className="mt-4 rounded-lg bg-cream/10 p-3 font-mono text-[11px] text-mist/80">
         ⚠ {t.console.evalDisclaimer}
       </p>
+      <p className="mt-2 px-3 font-mono text-[11px] text-mist/60">{t.console.evalWink}</p>
     </div>
   )
 }

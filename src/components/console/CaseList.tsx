@@ -1,4 +1,4 @@
-import { t } from '../../strings'
+import { useLang } from '../../i18n'
 import { DECISION_META, type LoopCase } from '../../types'
 
 const TONE_BG = {
@@ -16,6 +16,7 @@ export default function CaseList({
   activeId: string
   onSelect: (id: string) => void
 }) {
+  const { lang, t } = useLang()
   return (
     <div className="flex gap-2 overflow-x-auto pb-2 lg:block lg:w-56 lg:shrink-0 lg:space-y-2 lg:overflow-visible lg:pb-0">
       {cases.map((c) => {
@@ -39,7 +40,7 @@ export default function CaseList({
             <span
               className={`mt-2 inline-block rounded-full px-2 py-0.5 font-mono text-[10px] ${TONE_BG[meta.tone]}`}
             >
-              {meta.label}
+              {meta[lang]}
             </span>
           </button>
         )

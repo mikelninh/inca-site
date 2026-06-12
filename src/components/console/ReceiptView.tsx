@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { t } from '../../strings'
+import { useLang } from '../../i18n'
 import type { LoopCase } from '../../types'
 
 export default function ReceiptView({ c }: { c: LoopCase }) {
+  const { t } = useLang()
   const [open, setOpen] = useState(false)
   return (
     <div

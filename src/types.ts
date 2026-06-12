@@ -99,9 +99,12 @@ export interface ToolLayerData {
 
 export type AgentRun = { ran: false } | { ran?: true; [k: string]: unknown }
 
-export const DECISION_META: Record<Decision, { label: string; tone: 'core' | 'signal' | 'maroon' }> = {
-  pay: { label: 'auszahlen', tone: 'core' },
-  pay_reduced: { label: 'gekürzt auszahlen', tone: 'core' },
-  decline: { label: 'ablehnen', tone: 'maroon' },
-  refer_to_human: { label: 'an Mensch', tone: 'signal' },
+export const DECISION_META: Record<
+  Decision,
+  { de: string; en: string; tone: 'core' | 'signal' | 'maroon' }
+> = {
+  pay: { de: 'auszahlen', en: 'pay', tone: 'core' },
+  pay_reduced: { de: 'gekürzt auszahlen', en: 'pay reduced', tone: 'core' },
+  decline: { de: 'ablehnen', en: 'decline', tone: 'maroon' },
+  refer_to_human: { de: 'an Mensch', en: 'human review', tone: 'signal' },
 }

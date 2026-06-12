@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-test('voller Durchklick', async ({ page }) => {
+test('voller Durchklick DE', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('h1')).toContainText('Euer Loop')
 
@@ -21,13 +21,25 @@ test('voller Durchklick', async ({ page }) => {
   await page.getByTestId('tab-benchmark').click()
   await expect(page.getByText('Prompt lesen').first()).toBeVisible()
 
+  // Aufklappbares: Teardown-Bruchstellen
+  await page.getByText('Alle 5 Bruchstellen zeigen').click()
+  await expect(page.getByText('AVB-Heterogenität')).toBeVisible()
+
   // Easter Egg + CTA
   await expect(page.getByTestId('easter-egg')).toContainText('refer_to_human')
   await expect(page.getByTestId('mail-cta')).toHaveAttribute('href', 'mailto:mikel_ninh@yahoo.de')
 })
 
-test('noindex und sprache gesetzt', async ({ page }) => {
+test('EN-Toggle wechselt Texte und persistiert', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('html')).toHaveAttribute('lang', 'de')
+  await page.getByTestId('lang-toggle').click()
+  await expect(page.locator('h1')).toContainText('Your loop')
+  await page.reload()
+  await expect(page.locator('h1')).toContainText('Your loop')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+})
+
+test('noindex gesetzt', async ({ page }) => {
+  await page.goto('/')
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow')
 })

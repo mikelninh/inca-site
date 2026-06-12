@@ -1,6 +1,6 @@
 import loop from '../data/loop.json'
+import { useLang } from '../i18n'
 import { useClock, useReveal } from '../motion'
-import { t } from '../strings'
 import { DECISION_META, type LoopData } from '../types'
 
 const data = loop as unknown as LoopData
@@ -12,8 +12,9 @@ const TONE_PILL = {
 }
 
 export default function Hero() {
+  const { lang, t } = useLang()
   const clock = useClock()
-  const ref = useReveal<HTMLElement>()
+  const ref = useReveal<HTMLElement>(lang)
   const preview = data.cases.find((c) => c.decision === 'refer_to_human') ?? data.cases[0]
   const meta = DECISION_META[preview.decision]
   return (
@@ -56,7 +57,7 @@ export default function Hero() {
           <div className="flex items-center justify-between font-mono text-xs text-faint">
             <span>{preview.claim_id}</span>
             <span className={`rounded-full px-2 py-0.5 text-[10px] ${TONE_PILL[meta.tone]}`}>
-              {meta.label}
+              {meta[lang]}
             </span>
           </div>
           <p className="mt-1 font-serif text-lg">{preview.fnol_text.slice(0, 80)}…</p>

@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { t } from '../../strings'
+import { useLang } from '../../i18n'
 import type { BenchmarkVersion, LoopData } from '../../types'
 
 function VersionCard({ v, prompt }: { v: BenchmarkVersion; prompt: string }) {
+  const { t } = useLang()
   const [showPrompt, setShowPrompt] = useState(false)
   return (
     <div className="flex-1 rounded-xl bg-cream p-4">

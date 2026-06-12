@@ -1,8 +1,9 @@
+import { useLang } from '../i18n'
 import { useReveal } from '../motion'
-import { t } from '../strings'
 
 export default function Fit() {
-  const ref = useReveal<HTMLElement>()
+  const { lang, t } = useLang()
+  const ref = useReveal<HTMLElement>(lang)
   return (
     <section id="fit" ref={ref} className="mx-auto max-w-[1320px] px-6 py-24 lg:px-8">
       <p className="eyebrow reveal">{t.fit.eyebrow}</p>
@@ -19,7 +20,7 @@ export default function Fit() {
         ))}
       </div>
       <div
-        className="reveal mx-auto mt-12 max-w-md rounded-xl bg-mist p-4 font-mono text-xs text-darkgreen"
+        className="reveal mx-auto mt-12 max-w-lg rounded-xl bg-mist p-4 font-mono text-xs leading-relaxed text-darkgreen"
         data-testid="easter-egg"
       >
         <div>
@@ -30,10 +31,19 @@ export default function Fit() {
           <span className="text-signal-deep">"refer_to_human"</span>,
         </div>
         <div>
-          <span className="font-semibold text-core-deep">"why"</span>: ["{t.fit.easterEggWhy}"],
+          <span className="font-semibold text-core-deep">"why"</span>: ["{t.fit.egg.why}"],
         </div>
         <div>
-          <span className="font-semibold text-core-deep">"blocked_actions"</span>: []
+          <span className="font-semibold text-core-deep">"fraud_signals"</span>: ["
+          {t.fit.egg.fraudSignal}"],
+        </div>
+        <div>
+          <span className="font-semibold text-core-deep">"blocked_actions"</span>: ["
+          {t.fit.egg.blocked}"],
+        </div>
+        <div>
+          <span className="font-semibold text-core-deep">"uncertainty_notes"</span>: ["
+          {t.fit.egg.uncertainty}"]
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function useReveal<T extends HTMLElement>() {
+// `dep` (z.B. die Sprache) erzwingt Neu-Beobachtung, wenn React die Knoten ersetzt hat.
+export function useReveal<T extends HTMLElement>(dep?: unknown) {
   const ref = useRef<T>(null)
   useEffect(() => {
     const el = ref.current
@@ -14,7 +15,7 @@ export function useReveal<T extends HTMLElement>() {
       obs.observe(n)
     })
     return () => obs.disconnect()
-  }, [])
+  }, [dep])
   return ref
 }
 

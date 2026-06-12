@@ -1,8 +1,9 @@
+import { useLang } from '../i18n'
 import { useReveal } from '../motion'
-import { t } from '../strings'
 
 export default function CtaFooter() {
-  const ref = useReveal<HTMLElement>()
+  const { lang, t } = useLang()
+  const ref = useReveal<HTMLElement>(lang)
   return (
     <footer id="cta" ref={ref} className="bg-darkgreen py-24 text-cream">
       <div className="mx-auto max-w-[1320px] px-6 text-center lg:px-8">
