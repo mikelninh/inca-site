@@ -1,0 +1,51 @@
+import { useState } from 'react'
+import loop from '../../data/loop.json'
+import { useClock, useReveal } from '../../motion'
+import { t } from '../../strings'
+import type { LoopData } from '../../types'
+import CaseList from './CaseList'
+import PipelineView from './PipelineView'
+import ReceiptView from './ReceiptView'
+
+const data = loop as unknown as LoopData
+
+export default function Console() {
+  const clock = useClock()
+  const ref = useReveal<HTMLElement>()
+  const [activeId, setActiveId] = useState(data.cases[0].claim_id)
+  const active = data.cases.find((c) => c.claim_id === activeId)!
+  return (
+    <section id="konsole" ref={ref} className="bg-softwhite py-24">
+      <div className="mx-auto max-w-[1320px] px-6 lg:px-8">
+        <div className="reveal mx-auto max-w-5xl rounded-[28px] bg-sage p-6 shadow-[0_24px_60px_rgba(47,53,18,0.25)] lg:p-8">
+          <div className="flex items-center justify-between font-mono text-[11px] tracking-[0.14em] text-mist">
+            <span>
+              <span className="live-dot mr-2" />
+              {t.console.header}
+            </span>
+            <span>{clock} BERLIN</span>
+          </div>
+          <div className="mt-6 flex flex-col gap-5 lg:flex-row">
+            <CaseList cases={data.cases} activeId={activeId} onSelect={setActiveId} />
+            <div className="min-w-0 flex-1 space-y-5">
+              <div className="rounded-xl bg-cream p-4">
+                <div className="font-mono text-xs text-faint">
+                  {active.claim_id} · {active.line_of_business}
+                </div>
+                <p className="mt-1 font-serif text-lg">{active.fnol_text}</p>
+                <p className="mt-2 border-l-2 border-core pl-3 text-xs text-muted">
+                  {active.policy_excerpt}
+                </p>
+              </div>
+              <PipelineView traces={active.receipt.traces} caseId={active.claim_id} />
+              <ReceiptView c={active} />
+            </div>
+          </div>
+        </div>
+        <p className="reveal mt-4 text-center font-mono text-xs tracking-[0.1em] text-faint">
+          {t.console.caption}
+        </p>
+      </div>
+    </section>
+  )
+}

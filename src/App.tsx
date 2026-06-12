@@ -1,12 +1,13 @@
 import Hero from './components/Hero'
 import Nav from './components/Nav'
+import Console from './components/console/Console'
 
 export default function App() {
   return (
     <>
       <Nav />
       <Hero />
-      <section id="konsole" />
+      <Console />
       <section id="teardown" />
       <section id="grounding" />
       <section id="flotte" />
