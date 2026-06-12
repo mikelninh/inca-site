@@ -3,16 +3,21 @@ import loop from '../../data/loop.json'
 import { useClock, useReveal } from '../../motion'
 import { t } from '../../strings'
 import type { LoopData } from '../../types'
+import BenchmarkTab from './BenchmarkTab'
 import CaseList from './CaseList'
+import EvalTab from './EvalTab'
 import PipelineView from './PipelineView'
 import ReceiptView from './ReceiptView'
 
 const data = loop as unknown as LoopData
 
+type Tab = keyof typeof t.console.tabs
+
 export default function Console() {
   const clock = useClock()
   const ref = useReveal<HTMLElement>()
   const [activeId, setActiveId] = useState(data.cases[0].claim_id)
+  const [tab, setTab] = useState<Tab>('faelle')
   const active = data.cases.find((c) => c.claim_id === activeId)!
   return (
     <section id="konsole" ref={ref} className="bg-softwhite py-24">
@@ -25,22 +30,50 @@ export default function Console() {
             </span>
             <span>{clock} BERLIN</span>
           </div>
-          <div className="mt-6 flex flex-col gap-5 lg:flex-row">
-            <CaseList cases={data.cases} activeId={activeId} onSelect={setActiveId} />
-            <div className="min-w-0 flex-1 space-y-5">
-              <div className="rounded-xl bg-cream p-4">
-                <div className="font-mono text-xs text-faint">
-                  {active.claim_id} · {active.line_of_business}
-                </div>
-                <p className="mt-1 font-serif text-lg">{active.fnol_text}</p>
-                <p className="mt-2 border-l-2 border-core pl-3 text-xs text-muted">
-                  {active.policy_excerpt}
-                </p>
-              </div>
-              <PipelineView traces={active.receipt.traces} caseId={active.claim_id} />
-              <ReceiptView c={active} />
-            </div>
+          <div className="mt-5 flex gap-2">
+            {(Object.keys(t.console.tabs) as Tab[]).map((k) => (
+              <button
+                key={k}
+                onClick={() => setTab(k)}
+                data-testid={`tab-${k}`}
+                className={`rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.1em] transition ${
+                  tab === k
+                    ? 'bg-core text-darkgreen'
+                    : 'border border-mist/30 text-mist hover:border-mist/60'
+                }`}
+              >
+                {t.console.tabs[k]}
+              </button>
+            ))}
           </div>
+          {tab === 'faelle' && (
+            <div className="mt-6 flex flex-col gap-5 lg:flex-row">
+              <CaseList cases={data.cases} activeId={activeId} onSelect={setActiveId} />
+              <div className="min-w-0 flex-1 space-y-5">
+                <div className="rounded-xl bg-cream p-4">
+                  <div className="font-mono text-xs text-faint">
+                    {active.claim_id} · {active.line_of_business}
+                  </div>
+                  <p className="mt-1 font-serif text-lg">{active.fnol_text}</p>
+                  <p className="mt-2 border-l-2 border-core pl-3 text-xs text-muted">
+                    {active.policy_excerpt}
+                  </p>
+                </div>
+                <PipelineView traces={active.receipt.traces} caseId={active.claim_id} />
+                <ReceiptView c={active} />
+              </div>
+            </div>
+          )}
+          {tab === 'auswertung' && (
+            <div className="mt-6">
+              <EvalTab data={data} />
+            </div>
+          )}
+          {tab === 'benchmark' && (
+            <div className="mt-6">
+              <BenchmarkTab data={data} />
+            </div>
+          )}
         </div>
         <p className="reveal mt-4 text-center font-mono text-xs tracking-[0.1em] text-faint">
           {t.console.caption}
