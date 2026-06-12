@@ -1,6 +1,7 @@
 import Hero from './components/Hero'
 import Nav from './components/Nav'
 import Console from './components/console/Console'
+import Grounding from './components/Grounding'
 import Teardown from './components/Teardown'
 
 export default function App() {
@@ -10,7 +11,7 @@ export default function App() {
       <Hero />
       <Console />
       <Teardown />
-      <section id="grounding" />
+      <Grounding />
       <section id="flotte" />
       <section id="fit" />
       <section id="cta" />
