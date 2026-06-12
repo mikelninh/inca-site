@@ -40,9 +40,43 @@ h1 em, h2 em {
   font-style: italic; /* Instrument Serif italic */
 }
 
+::selection {
+  background: var(--color-mist);
+  color: var(--color-darkgreen);
+}
+
 .eyebrow {
   @apply font-mono text-xs uppercase text-faint;
   letter-spacing: 0.14em;
+}
+
+.lift {
+  transition:
+    transform 200ms cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(47, 53, 18, 0.1);
+}
+
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1.5px;
+  width: 100%;
+  background: var(--color-core);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
 }
 
 .pill-cta {

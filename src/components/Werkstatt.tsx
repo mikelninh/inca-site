@@ -15,7 +15,7 @@ export default function Werkstatt() {
         <p className="reveal mt-5 max-w-2xl text-muted">{t.werkstatt.intro}</p>
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {t.werkstatt.steps.map((s) => (
-            <div key={s.title} className="reveal rounded-xl border border-hairline bg-white/60 p-6">
+            <div key={s.title} className="reveal lift rounded-xl border border-hairline bg-white/60 p-6">
               <h3 className="text-lg">{s.title}</h3>
               <p className="mt-2 text-sm text-muted">{s.body}</p>
             </div>

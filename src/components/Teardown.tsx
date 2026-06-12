@@ -30,7 +30,7 @@ export default function Teardown() {
       <h3 className="reveal mt-14 text-2xl">{t.teardown.breaksTitle}</h3>
       <div className="mt-5 grid gap-6 md:grid-cols-2">
         {[first, second].map((b) => (
-          <div key={b.title} className="reveal rounded-xl border border-hairline bg-white/50 p-6">
+          <div key={b.title} className="reveal lift rounded-xl border border-hairline bg-white/50 p-6">
             <h3 className="text-xl">{b.title}</h3>
             <p className="mt-2 text-sm text-muted">{b.body}</p>
           </div>
@@ -39,7 +39,7 @@ export default function Teardown() {
       <Expandable more={t.teardown.breaksMore} less={t.teardown.breaksLess}>
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           {rest.map((b) => (
-            <div key={b.title} className="rounded-xl border border-hairline bg-white/50 p-6">
+            <div key={b.title} className="lift rounded-xl border border-hairline bg-white/50 p-6">
               <h3 className="text-xl">{b.title}</h3>
               <p className="mt-2 text-sm text-muted">{b.body}</p>
             </div>

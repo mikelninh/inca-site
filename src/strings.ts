@@ -10,11 +10,11 @@ const de = {
   },
   hero: {
     eyebrow: 'BEWERBUNG · AI OPERATIONS · BERLIN',
-    titlePre: 'Euer Loop, ',
-    titleEm: 'einmal selbst gebaut.',
-    sub: 'Ich habe mir euren Schadenloop angeschaut — und einen kleinen, ehrlichen Mini-Loop dazu gebaut. Drei Agenten, ein Receipt pro Fall, ein Eval-Harness. Diese Seite lässt euch alles anfassen.',
+    titlePre: 'Eine Bewerbung, ',
+    titleEm: 'die man anfassen kann.',
+    sub: 'Euren Schadenloop kenne ich nur von außen — Website, Stellenprofil, gesunder Respekt. Also habe ich nachgebaut, was ich sehen konnte: drei Agenten, ein Receipt pro Fall, ein Eval-Harness. Bestimmt habt ihr vieles besser gelöst. Genau darüber würde ich gern reden.',
     cta: 'Mit Mikel sprechen',
-    secondary: '5 Minuten durchklicken ↓',
+    secondary: 'Erst anfassen, dann urteilen ↓',
   },
   loop: {
     title: 'Hinter allem steckt dieselbe Schleife.',
@@ -49,7 +49,7 @@ const de = {
     titlePre: 'Wie ich ',
     titleEm: 'euren Loop lese.',
     intro:
-      'Zwei Produkte auf einer Plattform, beide dieselbe Schleife: Ende-zu-Ende-Bearbeitung in 24h und Schadenquotenoptimierung als Prüf-Layer. Der KI-First-Anspruch steht und fällt mit einem Punkt, den ihr selbst benennt: Dunkelverarbeitungsquote ist nicht die wichtigste Kennzahl — Regulierungsqualität ist es. Genau darauf habe ich das Demo gebaut.',
+      'Quellenlage, ehrlich: eure Website, das Stellenprofil, öffentliche Interviews — mehr habe ich nicht, der Rest ist Hypothese. Und Hypothesen schreibt man auf, damit man sie korrigieren kann. So lese ich es: zwei Produkte auf einer Plattform, beide dieselbe Schleife. Der Punkt, den ihr selbst benennt — Dunkelverarbeitungsquote ist nicht die wichtigste Kennzahl, Regulierungsqualität ist es — ist genau der, auf den ich das Demo gebaut habe.',
     pipeline: [
       { step: 'FNOL & Reserve', agents: 18 },
       { step: 'Deckung & Haftung', agents: 12 },
@@ -217,11 +217,11 @@ const en: typeof de = {
   },
   hero: {
     eyebrow: 'APPLICATION · AI OPERATIONS · BERLIN',
-    titlePre: 'Your loop, ',
-    titleEm: 'built once myself.',
-    sub: 'I studied your claims loop — and built a small, honest mini-loop of my own. Three agents, a receipt per claim, an eval harness. This page lets you touch all of it.',
+    titlePre: 'A job application ',
+    titleEm: 'you can poke at.',
+    sub: 'I only know your claims loop from the outside — website, job ad, healthy respect. So I rebuilt what I could see: three agents, a receipt per claim, an eval harness. You have surely solved much of it better. That is exactly what I would like to talk about.',
     cta: 'Talk to Mikel',
-    secondary: 'click through in 5 minutes ↓',
+    secondary: 'play first, judge later ↓',
   },
   loop: {
     title: 'Behind everything sits the same loop.',
@@ -256,7 +256,7 @@ const en: typeof de = {
     titlePre: 'How I read ',
     titleEm: 'your loop.',
     intro:
-      'Two products on one platform, both the same loop: end-to-end processing in 24h and loss-ratio optimisation as a verification layer. The AI-first claim stands or falls with a point you name yourselves: the auto-resolution rate is not the metric that matters — settlement quality is. That is exactly what I built the demo around.',
+      'My sources, honestly: your website, the job ad, public interviews — that is all I have, the rest is hypothesis. And hypotheses are written down so they can be corrected. This is how I read it: two products on one platform, both the same loop. The point you name yourselves — the auto-resolution rate is not the metric that matters, settlement quality is — is exactly what I built the demo around.',
     pipeline: [
       { step: 'FNOL & reserve', agents: 18 },
       { step: 'Coverage & liability', agents: 12 },

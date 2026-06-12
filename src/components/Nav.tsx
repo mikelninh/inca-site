@@ -15,7 +15,7 @@ export default function Nav() {
             <a
               key={a}
               href={`#${a}`}
-              className="font-mono text-xs uppercase tracking-[0.12em] text-muted hover:text-ink"
+              className="nav-link font-mono text-xs uppercase tracking-[0.12em] text-muted hover:text-ink"
             >
               {t.nav[a]}
             </a>

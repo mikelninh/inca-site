@@ -13,7 +13,7 @@ export default function Fit() {
       </h2>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {t.fit.points.map((p) => (
-          <div key={p.title} className="reveal rounded-xl border border-hairline bg-white/50 p-6">
+          <div key={p.title} className="reveal lift rounded-xl border border-hairline bg-white/50 p-6">
             <h3 className="text-xl">{p.title}</h3>
             <p className="mt-2 text-sm text-muted">{p.body}</p>
           </div>

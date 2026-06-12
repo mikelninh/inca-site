@@ -10,7 +10,7 @@ function ToolCard({ tool, primary }: { tool: FleetTool; primary: boolean }) {
   const { t } = useLang()
   return (
     <div
-      className={`rounded-xl border p-5 ${
+      className={`lift rounded-xl border p-5 ${
         primary ? 'border-core/40 bg-white/60' : 'border-hairline bg-white/30'
       }`}
     >

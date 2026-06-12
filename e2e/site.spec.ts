@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test('voller Durchklick DE', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('h1')).toContainText('Euer Loop')
+  await expect(page.locator('h1')).toContainText('anfassen')
 
   // Konsole: Fall wechseln -> Receipt ändert sich
   const cases = page.locator('[data-testid^="case-"]')
@@ -33,9 +33,9 @@ test('voller Durchklick DE', async ({ page }) => {
 test('EN-Toggle wechselt Texte und persistiert', async ({ page }) => {
   await page.goto('/')
   await page.getByTestId('lang-toggle').click()
-  await expect(page.locator('h1')).toContainText('Your loop')
+  await expect(page.locator('h1')).toContainText('poke')
   await page.reload()
-  await expect(page.locator('h1')).toContainText('Your loop')
+  await expect(page.locator('h1')).toContainText('poke')
   await expect(page.locator('html')).toHaveAttribute('lang', 'en')
 })
 
