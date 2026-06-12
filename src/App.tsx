@@ -1,6 +1,7 @@
 import Hero from './components/Hero'
 import Nav from './components/Nav'
 import Console from './components/console/Console'
+import Teardown from './components/Teardown'
 
 export default function App() {
   return (
@@ -8,7 +9,7 @@ export default function App() {
       <Nav />
       <Hero />
       <Console />
-      <section id="teardown" />
+      <Teardown />
       <section id="grounding" />
       <section id="flotte" />
       <section id="fit" />
