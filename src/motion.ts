@@ -1,0 +1,55 @@
+import { useEffect, useRef, useState } from 'react'
+
+export function useReveal<T extends HTMLElement>() {
+  const ref = useRef<T>(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('is-visible')),
+      { threshold: 0.15 },
+    )
+    el.querySelectorAll('.reveal').forEach((n, i) => {
+      ;(n as HTMLElement).style.transitionDelay = `${i * 40}ms`
+      obs.observe(n)
+    })
+    return () => obs.disconnect()
+  }, [])
+  return ref
+}
+
+export function useCountUp(target: number, durationMs = 1400) {
+  const [value, setValue] = useState(0)
+  const ref = useRef<HTMLSpanElement>(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setValue(target)
+      return
+    }
+    const obs = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return
+      obs.disconnect()
+      const t0 = performance.now()
+      const tick = (now: number) => {
+        const p = Math.min((now - t0) / durationMs, 1)
+        setValue(target * (1 - Math.pow(1 - p, 3)))
+        if (p < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [target, durationMs])
+  return { ref, value }
+}
+
+export function useClock() {
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000)
+    return () => clearInterval(id)
+  }, [])
+  return now.toLocaleTimeString('de-DE', { hour12: false })
+}
