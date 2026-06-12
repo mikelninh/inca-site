@@ -1,7 +1,7 @@
 const de = {
   nav: {
     konsole: 'Konsole',
-    teardown: 'Teardown',
+    bruch: 'Bruchstellen',
     grounding: 'Grounding',
     flotte: 'Flotte',
     fit: 'Fit',
@@ -12,7 +12,7 @@ const de = {
     eyebrowShort: 'AI OPERATIONS · BERLIN',
     titlePre: 'Eine Bewerbung, ',
     titleEm: 'die man anfassen kann.',
-    sub: 'Ich kenne euren Schadenloop nur von außen. Also habe ich ihn nachgebaut: drei Agenten, ein Receipt pro Fall, ein Eval-Harness. Wo er bei euch in der Realität bricht — darüber will ich reden.',
+    sub: 'Wenig Worte, ein lauffähiger Mini-Loop: drei Agenten, ein Receipt pro Fall, ein Eval-Harness. Anfassen erlaubt — kaputt machen auch.',
     cta: 'Mit Mikel sprechen',
     secondary: 'Erst anfassen, dann urteilen ↓',
     repo: 'Code: github.com/mikelninh/inca-site',
@@ -39,58 +39,31 @@ const de = {
         'Selbsttest auf synthetischen Fixtures — die Differenz v1→v2 ist projiziert, nicht gemessen. Echte Zahlen: --live mit Key.',
     },
   },
-  teardown: {
-    eyebrow: 'TEARDOWN',
-    titlePre: 'Wie ich ',
-    titleEm: 'euren Loop lese.',
+  bruch: {
+    eyebrow: 'BRUCHSTELLEN',
+    titlePre: 'Wo mein Loop ',
+    titleEm: 'bricht.',
     intro:
-      'Quellenlage, ehrlich: eure Website, das Stellenprofil, öffentliche Interviews — der Rest ist Hypothese. So lese ich es: zwei Produkte auf einer Plattform, beide dieselbe Schleife. Der Punkt, den ihr selbst benennt — Regulierungsqualität schlägt Dunkelquote — ist genau der, auf den ich das Demo gebaut habe.',
-    breaksTitle: 'Wo es in der Realität bricht',
-    breaksMore: 'Alle 5 Bruchstellen zeigen',
-    breaksLess: 'Einklappen',
-    breaks: [
+      'Das Interessanteste beim Bauen war nicht, was funktioniert — sondern was bricht. Drei Stellen, alle direkt nachklickbar.',
+    openCase: 'Fall in der Konsole öffnen ↑',
+    openGrounding: 'Zum Grounding ↓',
+    cards: [
       {
-        title: 'Der Prompt, der in der Demo läuft, aber nicht über 10.000 Schäden',
-        body: 'Ein Agent, der bei einem Fall sauber urteilt, driftet über die Verteilung: andere Sparte, knappe FNOL, widersprüchliche Belege. Ohne Eval-Set mit Ground-Truth sieht man den Drift erst in der Reklamation.',
-      },
-      {
-        title: 'Unterschätzte Betrugssignale werden zu stiller Dunkelverarbeitung',
-        body: 'Der teuerste Fehler ist nicht der False Positive (kostet Bearbeitungszeit), sondern der False Negative, der automatisch reguliert wird. Eine hohe Dunkelquote versteckt genau diese Fälle. Im Demo bewusst als ein verpasstes Signal abgebildet — der Harness macht ihn sichtbar.',
+        title: 'Das übersehene Betrugssignal',
+        body: 'Der teuerste Fehler ist nicht der False Positive — er kostet nur Zeit. Es ist der False Negative, der automatisch durchläuft. KFZ-2026-003 ist genau so gebaut, und der Harness fängt ihn.',
+        caseId: 'KFZ-2026-003',
       },
       {
         title: 'Fehlende Angaben ≠ Ablehnung',
-        body: 'Unvollständige FNOL (kein Aktenzeichen, kein Datum) muss zu einer Rückfrage oder Übergabe führen, nicht zu einer falschen Auto-Entscheidung. Das ist eine Routing-Frage, keine Modell-Frage.',
+        body: 'Frische Police, kein Polizeibericht: Der Code blockt die Auszahlung und übergibt an einen Menschen — statt falsch zu automatisieren.',
+        caseId: 'HR-2026-004',
       },
       {
-        title: 'DAX-Versicherer-Qualitätsbar bei Kundenkommunikation',
-        body: 'Jede generierte Nachricht an den VN ist Außenwirkung des Versicherers. Hier ist „flawless" kein Vibe — es braucht messbare Gates und Review-Queues.',
-      },
-      {
-        title: 'AVB-Heterogenität',
-        body: 'Jeder Versicherer hat eigene Bedingungen. Deckungslogik muss aus dem mitgelieferten Vertragsauszug entscheiden, nicht aus Modellwissen — sonst halluziniert sie Klauseln, die im konkreten Vertrag nicht stehen.',
+        title: 'Klauseln nur aus dem Vertrag',
+        body: 'Deckung wird gegen den mitgelieferten Vertragsauszug geprüft, nie aus Modellwissen — sonst entstehen Klauseln, die es nicht gibt.',
+        caseId: null,
       },
     ],
-    first: {
-      title: 'Wo ich zuerst ansetzen würde',
-      points: [
-        {
-          title: 'Eval-Harness als erstes Bürgerrecht',
-          body: 'Bevor ein Prompt produktiv geht: ein Ground-Truth-Set pro Sparte, das Regulierungsqualität, Betrugs-Recall/Precision und Falsch-Positiv-Rate misst. Jede Prompt-Änderung wird daran gemessen, nicht am Bauchgefühl.',
-        },
-        {
-          title: 'Receipt als Standard, nicht als Nice-to-have',
-          body: 'Pro Fall: Quellen, Konfidenz, geblockte Aktionen, manuelle Verifikationspunkte. Gleichzeitig Auditierbarkeit (EU AI Act / DORA), Trainingsdatensatz für die Expert:innen und Vertrauensanker gegenüber dem Versicherer.',
-        },
-        {
-          title: 'Risiko bleibt am Menschen — by design',
-          body: 'Betrugsverdacht und Großschaden laufen nie durch den Autopiloten. Das senkt die Dunkelquote bewusst und erhöht die Qualität — der richtige Trade in einer regulierten Branche.',
-        },
-        {
-          title: 'Den teuersten Fehler zuerst jagen',
-          body: 'Recall auf echten Betrugsfällen vor Dunkelquote. Ein zusätzlicher Indizien-Agent plus Severity-Kalibrierung schließt die Lücke — und der Harness beweist, ob es geholfen hat.',
-        },
-      ],
-    },
   },
   grounding: {
     eyebrow: 'POLICY GROUNDING',
@@ -162,7 +135,7 @@ const de = {
 const en: typeof de = {
   nav: {
     konsole: 'Console',
-    teardown: 'Teardown',
+    bruch: 'Breaks',
     grounding: 'Grounding',
     flotte: 'Fleet',
     fit: 'Fit',
@@ -173,7 +146,7 @@ const en: typeof de = {
     eyebrowShort: 'AI OPERATIONS · BERLIN',
     titlePre: 'A job application ',
     titleEm: 'you can poke at.',
-    sub: 'I only know your claims loop from the outside. So I rebuilt it: three agents, a receipt per claim, an eval harness. Where it breaks in your reality — that is what I want to talk about.',
+    sub: 'Few words, one working mini-loop: three agents, a receipt per claim, an eval harness. Touching allowed — so is breaking.',
     cta: 'Talk to Mikel',
     secondary: 'play first, judge later ↓',
     repo: 'Code: github.com/mikelninh/inca-site',
@@ -200,58 +173,31 @@ const en: typeof de = {
         'Self-test on synthetic fixtures — the v1→v2 delta is projected, not measured. Real numbers: --live with a key.',
     },
   },
-  teardown: {
-    eyebrow: 'TEARDOWN',
-    titlePre: 'How I read ',
-    titleEm: 'your loop.',
+  bruch: {
+    eyebrow: 'BREAKING POINTS',
+    titlePre: 'Where my loop ',
+    titleEm: 'breaks.',
     intro:
-      'My sources, honestly: your website, the job ad, public interviews — the rest is hypothesis. This is how I read it: two products on one platform, both the same loop. The point you name yourselves — settlement quality beats auto-resolution rate — is exactly what I built the demo around.',
-    breaksTitle: 'Where it breaks in reality',
-    breaksMore: 'Show all 5 breaking points',
-    breaksLess: 'Collapse',
-    breaks: [
+      'The most interesting part of building was not what works — it is what breaks. Three spots, each one click away.',
+    openCase: 'open the case in the console ↑',
+    openGrounding: 'jump to grounding ↓',
+    cards: [
       {
-        title: 'The prompt that works in the demo but not across 10,000 claims',
-        body: 'An agent that judges one case cleanly drifts across the distribution: a different line of business, a terse FNOL, contradictory evidence. Without an eval set with ground truth, you only see the drift in the complaint.',
-      },
-      {
-        title: 'Underrated fraud signals become silent auto-resolution',
-        body: 'The most expensive error is not the false positive (it costs handling time) but the false negative that gets settled automatically. A high auto-resolution rate hides exactly these cases. The demo deliberately contains one missed signal — the harness makes it visible.',
+        title: 'The overlooked fraud signal',
+        body: 'The most expensive error is not the false positive — that only costs time. It is the false negative that sails through automatically. KFZ-2026-003 is built exactly that way, and the harness catches it.',
+        caseId: 'KFZ-2026-003',
       },
       {
         title: 'Missing information ≠ rejection',
-        body: 'An incomplete FNOL (no case number, no date) must lead to a follow-up question or a handover, not to a wrong automatic decision. That is a routing question, not a model question.',
+        body: 'Fresh policy, no police report: the code blocks the payout and hands over to a human — instead of automating a wrong decision.',
+        caseId: 'HR-2026-004',
       },
       {
-        title: 'DAX-insurer quality bar for customer communication',
-        body: 'Every generated message to the policyholder is the insurer speaking in public. "Flawless" is not a vibe here — it needs measurable gates and review queues.',
-      },
-      {
-        title: 'Policy heterogeneity',
-        body: 'Every insurer has its own terms. Coverage logic must decide from the contract excerpt that was provided, not from model knowledge — otherwise it hallucinates clauses that are not in the actual contract.',
+        title: 'Clauses only from the contract',
+        body: 'Coverage is checked against the contract excerpt that was provided, never from model memory — otherwise clauses appear that do not exist.',
+        caseId: null,
       },
     ],
-    first: {
-      title: 'Where I would start',
-      points: [
-        {
-          title: 'An eval harness as the first civil right',
-          body: 'Before a prompt goes to production: a ground-truth set per line of business measuring settlement quality, fraud recall/precision and false-positive rate. Every prompt change is measured against it — not against gut feeling.',
-        },
-        {
-          title: 'Receipts as the standard, not a nice-to-have',
-          body: 'Per claim: sources, confidence, blocked actions, manual verification points. That is auditability (EU AI Act / DORA), a training corpus for the experts, and a trust anchor towards the insurer — all at once.',
-        },
-        {
-          title: 'Risk stays with humans — by design',
-          body: 'Suspected fraud and large losses never ride the autopilot. That deliberately lowers the auto-resolution rate and raises quality — the right trade in a regulated industry.',
-        },
-        {
-          title: 'Hunt the most expensive error first',
-          body: 'Recall on real fraud cases before auto-resolution rate. An additional evidence agent plus severity calibration closes the gap — and the harness proves whether it helped.',
-        },
-      ],
-    },
   },
   grounding: {
     eyebrow: 'POLICY GROUNDING',

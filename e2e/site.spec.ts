@@ -21,9 +21,9 @@ test('voller Durchklick DE', async ({ page }) => {
   await page.getByTestId('tab-benchmark').click()
   await expect(page.getByText('Prompt lesen').first()).toBeVisible()
 
-  // Aufklappbares: Teardown-Bruchstellen
-  await page.getByText('Alle 5 Bruchstellen zeigen').click()
-  await expect(page.getByText('AVB-Heterogenität')).toBeVisible()
+  // Bruchstellen-Karte öffnet den passenden Fall in der Konsole
+  await page.getByTestId('break-card-0').click()
+  await expect(page.locator('#konsole')).toContainText('KFZ-2026-003 · kfz_kasko')
 
   // Easter Egg + CTA
   await expect(page.getByTestId('easter-egg')).toContainText('refer_to_human')

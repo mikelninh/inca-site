@@ -85,7 +85,10 @@ export default function Fleet() {
     ? [{ ...tail[0], tools: [...demoted, ...(tail[0]?.tools ?? [])] }, ...tail.slice(1)]
     : tail
   return (
-    <section id="flotte" ref={ref} className="mx-auto max-w-[1320px] px-6 py-24 lg:px-8">
+    <section id="flotte" ref={ref} className="relative mx-auto max-w-[1320px] px-6 py-24 lg:px-8">
+      <span className="sec-num" aria-hidden>
+        04
+      </span>
       <p className="eyebrow reveal">{t.fleet.eyebrow}</p>
       <h2 className="reveal mt-3 text-4xl lg:text-5xl">
         {t.fleet.titlePre}

@@ -46,6 +46,20 @@ export function useCountUp(target: number, durationMs = 1400) {
   return { ref, value }
 }
 
+export function useScrollProgress() {
+  const [p, setP] = useState(0)
+  useEffect(() => {
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      setP(max > 0 ? window.scrollY / max : 0)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  return p
+}
+
 export function useClock() {
   const [now, setNow] = useState(() => new Date())
   useEffect(() => {

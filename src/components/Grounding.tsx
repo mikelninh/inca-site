@@ -15,8 +15,11 @@ export default function Grounding() {
   const c = tl.cases[idx]
   const verified = Boolean((c.result as { verified?: boolean }).verified)
   return (
-    <section id="grounding" ref={ref} className="bg-softwhite py-24">
-      <div className="mx-auto max-w-[1320px] px-6 lg:px-8">
+    <section id="grounding" ref={ref} className="relative bg-softwhite py-24">
+      <span className="sec-num" aria-hidden>
+        03
+      </span>
+      <div className="relative mx-auto max-w-[1320px] px-6 lg:px-8">
         <p className="eyebrow reveal">{t.grounding.eyebrow}</p>
         <h2 className="reveal mt-3 max-w-2xl text-4xl lg:text-5xl">
           {t.grounding.titlePre}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import loop from '../../data/loop.json'
 import { useLang } from '../../i18n'
 import { useClock, useReveal } from '../../motion'
@@ -21,9 +21,23 @@ export default function Console() {
   const [activeId, setActiveId] = useState(data.cases[0].claim_id)
   const [tab, setTab] = useState<Tab>('faelle')
   const active = data.cases.find((c) => c.claim_id === activeId)!
+  useEffect(() => {
+    const onSelect = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail
+      if (data.cases.some((c) => c.claim_id === id)) {
+        setTab('faelle')
+        setActiveId(id)
+      }
+    }
+    window.addEventListener('inca:select-case', onSelect)
+    return () => window.removeEventListener('inca:select-case', onSelect)
+  }, [])
   return (
-    <section id="konsole" ref={ref} className="bg-softwhite py-24">
-      <div className="mx-auto max-w-[1320px] px-6 lg:px-8">
+    <section id="konsole" ref={ref} className="relative bg-softwhite py-24">
+      <span className="sec-num" aria-hidden>
+        01
+      </span>
+      <div className="relative mx-auto max-w-[1320px] px-6 lg:px-8">
         <div className="reveal mx-auto max-w-5xl rounded-[28px] bg-sage p-6 shadow-[0_24px_60px_rgba(47,53,18,0.25)] lg:p-8">
           <div className="flex items-center justify-between font-mono text-[11px] tracking-[0.14em] text-mist">
             <span>

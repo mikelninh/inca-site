@@ -45,6 +45,40 @@ h1 em, h2 em {
   color: var(--color-darkgreen);
 }
 
+/* Feines Korn über allem — Materialität statt flacher Flächen */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  z-index: 70;
+  background: var(--color-core);
+  transform-origin: left;
+}
+
+.sec-num {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  z-index: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(6rem, 12vw, 11rem);
+  line-height: 1;
+  color: var(--color-hairline);
+  user-select: none;
+  pointer-events: none;
+}
+
 .eyebrow {
   @apply font-mono text-xs uppercase text-faint;
   letter-spacing: 0.14em;

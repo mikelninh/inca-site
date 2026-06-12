@@ -26,7 +26,7 @@ export default function Hero() {
       <div>
         <p className="eyebrow reveal hidden sm:block">{t.hero.eyebrow}</p>
         <p className="eyebrow reveal sm:hidden">{t.hero.eyebrowShort}</p>
-        <h1 className="reveal mt-4 text-5xl leading-[0.98] lg:text-7xl">
+        <h1 className="reveal mt-4 text-[3.2rem] leading-[0.95] lg:text-[5.4rem]">
           {t.hero.titlePre}
           <em>{t.hero.titleEm}</em>
         </h1>

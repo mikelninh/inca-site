@@ -5,7 +5,10 @@ export default function Fit() {
   const { lang, t } = useLang()
   const ref = useReveal<HTMLElement>(lang)
   return (
-    <section id="fit" ref={ref} className="mx-auto max-w-[1320px] px-6 py-24 lg:px-8">
+    <section id="fit" ref={ref} className="relative mx-auto max-w-[1320px] px-6 py-24 lg:px-8">
+      <span className="sec-num" aria-hidden>
+        05
+      </span>
       <p className="eyebrow reveal">{t.fit.eyebrow}</p>
       <h2 className="reveal mt-3 text-4xl lg:text-5xl">
         {t.fit.titlePre}
